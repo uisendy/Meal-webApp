@@ -47,17 +47,6 @@ export default class PopUp {
           username: user.value,
           comment: comment.value,
         };
-        PopUp.createCommentOnDOM(
-          user,
-          comment,
-          ulContainer,
-          inputComment,
-        );
-        await InvolvementAPI.addComment(
-          inputComment,
-          this.data.idMeal,
-        );
-        PopUp.commentCountAdd(container);
         [user.value, comment.value] = ['', ''];
       });
     }
