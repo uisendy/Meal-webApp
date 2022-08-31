@@ -3,7 +3,9 @@ import logo from '../assets/meal-icon.png';
 import UserInterface from './userInterface.js';
 import MealAPI from './mealAPI.js';
 import CurrentCategory from './currentCategory.js';
+import CurrentMeal from './currentMeal.js';
 import InvolvementAPI from './involvementAPI.js';
+import PopUp from './popUp.js';
 import Menu from './menu.js';
 
 class App {
@@ -17,7 +19,7 @@ class App {
       const logoImg = new Image();
       logoImg.src = logo;
       logoImg.classList.add('hero__logo');
-      logoImg.alt = 'Getsen Recipes Logo';
+      logoImg.alt = 'Yummy Recipes Logo';
       container.appendChild(logoImg);
     });
   }
@@ -104,11 +106,26 @@ class App {
     App.closeMenu();
   };
 
-  addLike = async (clickedElement) => {
-    const card = clickedElement.parentNode.parentNode.parentNode;
+  loadPopup = async (clickedElement) => {
+    const card = clickedElement.parentNode.parentNode;
     const mealId = card.getAttribute('id');
-    await InvolvementAPI.addLike(mealId);
-    UserInterface.addToLikesCounterDOM(card);
+    const meal = await MealAPI.getRecipe(mealId);
+    document.body.classList.add('noScroll');
+
+    await InvolvementAPI.addComment(
+      { username: '', comment: '' },
+      mealId,
+    );
+
+    let comments = await InvolvementAPI.getComments(mealId);
+    comments = comments.filter((comment) => comment.username !== '');
+    const currentMeal = new CurrentMeal(meal, comments);
+
+    PopUp.pop({
+      ...currentMeal,
+      comments,
+      type: 'Recipe',
+    });
   };
 
   static forEachListener(items, func) {
@@ -130,6 +147,10 @@ class App {
       if (clickedElement.getAttribute('class').includes('category')) {
         this.selectCategory(clickedElement);
         return;
+      }
+
+      if (clickedElement.classList.contains('recipes__comments')) {
+        this.loadPopup(clickedElement);
       }
     });
   }
