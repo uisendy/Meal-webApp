@@ -1,13 +1,13 @@
 import "./style.css";
+import Header from "./components/header.js";
+import HeroSection from "./components/HeroSection.js";
+import MealDisplay from "./components/MealDisplay.js";
 
-function component() {
-  const element = document.createElement("div");
+const main = document.querySelector(".main-container");
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = `Hello World`;
-  element.classList = "hello";
+console.log(Header());
 
-  return element;
-}
-
-document.body.appendChild(component());
+document.body.appendChild(Header());
+main.appendChild(HeroSection());
+main.appendChild(MealDisplay());
+document.body.appendChild(main);
