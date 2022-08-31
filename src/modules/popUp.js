@@ -47,6 +47,16 @@ export default class PopUp {
           username: user.value,
           comment: comment.value,
         };
+        PopUp.createCommentOnDOM(
+          user,
+          comment,
+          ulContainer,
+          inputComment,
+        );
+        await InvolvementAPI.addComment(
+          inputComment,
+          this.data.idMeal,
+        );
         [user.value, comment.value] = ['', ''];
       });
     }
@@ -101,16 +111,7 @@ export default class PopUp {
     });
     container.innerHTML += li;
   }
-
-  static commentCountAdd(container) {
-    this.commentCount += 1;
-    const commentsNum = this.data.comments.length + this.commentCount;
-    container.querySelector(
-      '.recipes__popup_comment-count',
-    ).innerHTML = `Comments (${commentsNum})`;
-    return commentsNum;
-  }
-
+ 
   static instructionsTemplate(instructs) {
     let newInstructs = '';
     instructs.split(/\r?\n/).forEach((line) => {
