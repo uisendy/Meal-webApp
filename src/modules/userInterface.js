@@ -62,22 +62,14 @@ export default class UserInterface {
   }
 
   static addToLikesCounterDOM(element) {
-    const nLikes = element.querySelector('.recipes__likes');
-    const oldLikes = +nLikes.children[0].innerText;
-    const newLikes = oldLikes + 1;
-
+    
   }
 
   static counterText(type) {
-    const counters = document.querySelectorAll('.counter');
-    let i = 0;
-    counters.forEach((counter) => {
-
-      i += 1;
-    });
+    
   }
 
   static itemCount(element) {
-    return element.children.length;
+    
   }
 }
