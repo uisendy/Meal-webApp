@@ -1,14 +1,11 @@
-import InvolvementAPI from './involvementAPI.js';
+import InvolvementAPI from "./involvementAPI.js";
 
-const list = document.querySelector('.list');
+const list = document.querySelector(".list");
 
 export default class UserInterface {
   static displayRecipes(mealsArr, likes = []) {
     mealsArr.forEach((recipe) => {
-      const mealLikes = InvolvementAPI.getMealLikes(
-        likes,
-        recipe.idMeal,
-      );
+      const mealLikes = InvolvementAPI.getMealLikes(likes, recipe.idMeal);
       this.createCard(recipe, mealLikes);
     });
   }
@@ -19,14 +16,10 @@ export default class UserInterface {
     });
   }
 
-  static createCategoryCard({
-    idCategory,
-    strCategory,
-    strCategoryThumb,
-  }) {
-    const LI = document.createElement('li');
-    LI.classList.add('category__card');
-    LI.setAttribute('id', idCategory);
+  static createCategoryCard({ idCategory, strCategory, strCategoryThumb }) {
+    const LI = document.createElement("li");
+    LI.classList.add("category__card");
+    LI.setAttribute("id", idCategory);
     LI.innerHTML = `
       <img class="category__image" src="${strCategoryThumb}" alt="Delicious ${strCategory}">
       <div class="category__content">
@@ -38,13 +31,10 @@ export default class UserInterface {
     list.appendChild(LI);
   }
 
-  static createCard(
-    { strMeal = '', strMealThumb = '', idMeal },
-    likes = 0,
-  ) {
-    const LI = document.createElement('li');
-    LI.classList.add('recipes__card');
-    LI.setAttribute('id', idMeal);
+  static createCard({ strMeal = "", strMealThumb = "", idMeal }, likes = 0) {
+    const LI = document.createElement("li");
+    LI.classList.add("recipes__card");
+    LI.setAttribute("id", idMeal);
     LI.innerHTML = `
       <img class="recipes__image" src="${strMealThumb}" alt="Delicious ${strMeal}">
       <div class="recipes__content">
@@ -53,23 +43,17 @@ export default class UserInterface {
               <i class="fa-regular fa-heart"></i>
           </div>
           <span class="recipes__likes"><span>${likes}</span> like${
-  likes === 1 ? '' : 's'
-}</span>
+      likes === 1 ? "" : "s"
+    }</span>
           <button class="recipes__comments">Comments</button>
       </div>
     `;
     list.appendChild(LI);
   }
 
-  static addToLikesCounterDOM(element) {
-    
-  }
+  static addToLikesCounterDOM(element) {}
 
-  static counterText(type) {
-    
-  }
+  static counterText(type) {}
 
-  static itemCount(element) {
-    
-  }
+  static itemCount(element) {}
 }
