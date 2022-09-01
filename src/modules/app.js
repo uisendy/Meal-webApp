@@ -172,6 +172,10 @@ class App {
       if (clickedElement.classList.contains("recipes__comments")) {
         this.loadPopup(clickedElement);
       }
+
+      if (clickedElement.classList.contains("fa-heart")) {
+        UserInterface.addToLikesCounterDOM(clickedElement);
+      }
     });
 
     this.heroLogos[0].addEventListener("click", () => {

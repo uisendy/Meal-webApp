@@ -51,7 +51,15 @@ export default class UserInterface {
     list.appendChild(LI);
   }
 
-  static addToLikesCounterDOM(element) {}
+  static addToLikesCounterDOM(element) {
+    console.log(element.parentElement.nextElementSibling);
+    let likes =
+      element.parentElement.nextElementSibling.firstElementChild.textContent;
+    likes++;
+    element.parentElement.nextElementSibling.innerHTML = `<span>${likes}</span> like${
+      likes === 1 ? "" : "s"
+    }`;
+  }
 
   static counterText(type) {}
 
