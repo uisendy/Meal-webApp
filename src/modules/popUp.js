@@ -1,4 +1,4 @@
-import InvolvementAPI from './involvementAPI.js';
+import InvolvementAPI from "./involvementAPI.js";
 
 export default class PopUp {
   static pop(data) {
@@ -8,15 +8,13 @@ export default class PopUp {
   }
 
   static template() {
-    const container = document.createElement('div');
-    container.setAttribute('id', this.data.idMeal);
-    container.setAttribute('class', 'recipes__popup');
+    const container = document.createElement("div");
+    container.setAttribute("id", this.data.idMeal);
+    container.setAttribute("class", "recipes__popup");
 
     const tags = PopUp.tagsTemplate(this.data.strTags);
     const commentSection = PopUp.commentsTemplate();
-    const instructs = PopUp.instructionsTemplate(
-      this.data.strInstructions,
-    );
+    const instructs = PopUp.instructionsTemplate(this.data.strInstructions);
 
     container.innerHTML = `
       <img class="recipes__popup_image" src="${this.data.strMealThumb}" alt="Delicious ${this.data.strMeal}">
@@ -28,37 +26,29 @@ export default class PopUp {
       ${commentSection}
     `;
 
-    container.querySelector('i').addEventListener('click', () => {
-      document.body.classList.remove('noScroll');
+    container.querySelector("i").addEventListener("click", () => {
+      document.body.classList.remove("noScroll");
       container.remove();
     });
 
-    if (this.data.type === 'Recipe') {
-      const user = container.querySelector('input');
-      const comment = container.querySelector('textarea');
-      const submit = container.querySelector('button');
+    if (this.data.type === "Recipe") {
+      const user = container.querySelector("input");
+      const comment = container.querySelector("textarea");
+      const submit = container.querySelector("button");
       const ulContainer = container.querySelector(
-        '.recipes__popup_comments ul',
+        ".recipes__popup_comments ul"
       );
 
-      submit.addEventListener('click', async () => {
-        if (user.value === '' || comment.value === '') return;
+      submit.addEventListener("click", async () => {
+        if (user.value === "" || comment.value === "") return;
         const inputComment = {
           username: user.value,
           comment: comment.value,
         };
-        PopUp.createCommentOnDOM(
-          user,
-          comment,
-          ulContainer,
-          inputComment,
-        );
-        await InvolvementAPI.addComment(
-          inputComment,
-          this.data.idMeal,
-        );
+        PopUp.createCommentOnDOM(user, comment, ulContainer, inputComment);
+        await InvolvementAPI.addComment(inputComment, this.data.idMeal);
         PopUp.commentCountAdd(container);
-        [user.value, comment.value] = ['', ''];
+        [user.value, comment.value] = ["", ""];
       });
     }
 
@@ -66,7 +56,7 @@ export default class PopUp {
   }
 
   static displayComment(data) {
-    const [year, month, day] = data.creation_date.split('-');
+    const [year, month, day] = data.creation_date.split("-");
     return `
         <li class="recipes__popup_comment">
           <span class="recipes__popup_comment-user">
@@ -85,7 +75,7 @@ export default class PopUp {
   }
 
   static commentsTemplate() {
-    let comments = '';
+    let comments = "";
     this.data.comments.forEach((comment) => {
       comments += PopUp.displayComment(comment);
     });
@@ -101,13 +91,11 @@ export default class PopUp {
   }
 
   static createCommentOnDOM(user, comment, container, inputComment) {
-    const [day, month, year] = new Date()
-      .toLocaleDateString()
-      .split('/');
+    const [day, month, year] = new Date().toLocaleDateString().split("/");
     const li = PopUp.displayComment({
       ...inputComment,
-      creation_date: `${year}-${month < 10 ? '0' : ''}${month}-${
-        day < 10 ? '0' : ''
+      creation_date: `${year}-${month < 10 ? "0" : ""}${month}-${
+        day < 10 ? "0" : ""
       }${day}`,
     });
     container.innerHTML += li;
@@ -117,24 +105,24 @@ export default class PopUp {
     this.commentCount += 1;
     const commentsNum = this.data.comments.length + this.commentCount;
     container.querySelector(
-      '.recipes__popup_comment-count',
+      ".recipes__popup_comment-count"
     ).innerHTML = `Comments (${commentsNum})`;
     return commentsNum;
   }
- 
+
   static instructionsTemplate(instructs) {
-    let newInstructs = '';
+    let newInstructs = "";
     instructs.split(/\r?\n/).forEach((line) => {
-      if (line === '') return;
+      if (line === "") return;
       newInstructs += `<li class="popup__instructs_line">${line}</li>`;
     });
     return newInstructs;
   }
 
   static tagsTemplate(tags) {
-    if (!tags) return '';
-    let tagsUl = '';
-    tags.split(',').forEach((tag) => {
+    if (!tags) return "";
+    let tagsUl = "";
+    tags.split(",").forEach((tag) => {
       tagsUl += `<li class="recipes__popup_tagLi">${tag}</li>`;
     });
     return tagsUl;
