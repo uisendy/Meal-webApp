@@ -30,4 +30,21 @@ describe('Counting number of comments', () => {
 
     expect(num).toEqual(1);
   });
+  
+  it('Add 1 comment', () => {
+    const [container1] = createEnv();
+    const num = PopUp.commentCountAdd(container1);
+
+    expect(num).toEqual(1);
+  });
+
+  it("Add 'n' comments", (n = 8) => {
+    const [container2] = createEnv([]);
+    let num = 0;
+    for (let i = 0; i < n; i += 1) {
+      num = PopUp.commentCountAdd(container2);
+    }
+
+    expect(num).toEqual(n);
+  });
 });
