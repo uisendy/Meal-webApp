@@ -23,14 +23,7 @@ describe('Counting number of comments', () => {
 
     expect(num).toEqual(0);
   });
-  
-  it('Add 1 comment', () => {
-    const [container1] = createEnv();
-    const num = PopUp.commentCountAdd(container1);
 
-    expect(num).toEqual(1);
-  });
-  
   it('Add 1 comment', () => {
     const [container1] = createEnv();
     const num = PopUp.commentCountAdd(container1);
