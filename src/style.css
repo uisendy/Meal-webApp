@@ -314,10 +314,14 @@ span>i.menu-toggle {
   background-color: white;
   backdrop-filter: blur(2px);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  top: 0%;
+  top: 10%;
   left: 0%;
   overflow-y: auto;
   border-radius: 10px;
+}
+
+.recipes__popup.inactive{
+  display: none
 }
 
 .recipes__popup_image {
@@ -326,11 +330,11 @@ span>i.menu-toggle {
 
 .recipes__popup .fa-xmark {
   color: white;
-  background-color: black;
+  background-color: red;
   padding: 6px 8px;
   position: fixed;
   top: 0;
-  right: 0;
+  right: 5%;
   cursor: pointer;
 }
 
