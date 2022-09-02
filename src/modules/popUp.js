@@ -1,3 +1,7 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable linebreak-style */
+/* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 import InvolvementAPI from "./involvementAPI.js";
 
 export default class PopUp {

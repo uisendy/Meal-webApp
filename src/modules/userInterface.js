@@ -1,3 +1,11 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-plusplus */
+/* eslint-disable linebreak-style */
+/* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 import InvolvementAPI from "./involvementAPI.js";
 
 const list = document.querySelector(".list");

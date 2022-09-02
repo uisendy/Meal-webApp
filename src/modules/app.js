@@ -1,3 +1,13 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable linebreak-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable linebreak-style */
+/* eslint-disable curly */
+/* eslint-disable nonblock-statement-body-position */
+/* eslint-disable no-return-assign */
+/* eslint-disable linebreak-style */
+/* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 import "../style.css";
 import logo from "../assets/meal-icon.png";
 import UserInterface from "./userInterface.js";

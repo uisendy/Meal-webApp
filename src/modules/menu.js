@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable quotes */
+/* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 const menuList = document.querySelector('.menu__list');
 
 export default class Menu {
