@@ -309,6 +309,10 @@ span > i.menu-toggle {
   background-color: bisque;
 }
 
+.recipes__comments:hover {
+  background-color: rgb(205, 175, 138);
+}
+
 .recipes__popup {
   display: block;
   width: 100%;
