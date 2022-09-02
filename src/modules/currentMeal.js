@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 export default class CurrentMeal {
   idMeal;
 

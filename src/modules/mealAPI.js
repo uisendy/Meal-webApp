@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable quotes */
+/* eslint quotes: ["error", "double", { "avoidEscape": true }] */
 import FetchRequest from './fetchRequest.js';
 
 const urlMap = {
