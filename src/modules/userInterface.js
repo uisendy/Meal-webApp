@@ -31,7 +31,10 @@ export default class UserInterface {
     list.appendChild(LI);
   }
 
-  static createCard({ strMeal = "", strMealThumb = "", idMeal }, likes = 0) {
+  static createCard = async (
+    { strMeal = "", strMealThumb = "", idMeal },
+    likes = 0
+  ) => {
     const LI = document.createElement("li");
     LI.classList.add("recipes__card");
     LI.setAttribute("id", idMeal);
@@ -49,10 +52,9 @@ export default class UserInterface {
       </div>
     `;
     list.appendChild(LI);
-  }
+  };
 
   static addToLikesCounterDOM(element) {
-    console.log(element.parentElement.nextElementSibling);
     let likes =
       element.parentElement.nextElementSibling.firstElementChild.textContent;
     likes++;
