@@ -7,8 +7,9 @@ import CurrentMeal from "./currentMeal.js";
 import InvolvementAPI from "./involvementAPI.js";
 import PopUp from "./popUp.js";
 import Menu from "./menu.js";
+import Counters from "./Counters.js";
 
-class App {
+export default class App {
   start() {
     this.imageContainer = document.querySelectorAll(".image");
     this.asyncEnv();
@@ -30,7 +31,7 @@ class App {
     Menu.displayCategories(categories);
     UserInterface.displayCategories(categories);
     UserInterface.counterText("Categories");
-    this.showTotalCategory();
+    Counters.showTotalCategory();
     this.selectTags();
     this.setListeners();
   }
@@ -78,7 +79,7 @@ class App {
     UserInterface.displayRecipes(currentCategory.meals, allLikes);
     UserInterface.counterText(`${categoryName} Recipes`);
     window.scrollTo(0, 0);
-    this.showTotalMealInCategory(categoryName);
+    Counters.showTotalMealInCategory(categoryName);
 
     // app.hideLanding();
   };
@@ -97,7 +98,7 @@ class App {
     UserInterface.displayRecipes(currentCategory.meals, allLikes);
     UserInterface.counterText(`${categoryName} Recipes`);
     window.scrollTo(0, 0);
-    this.showTotalMealInCategory(categoryName);
+    Counters.showTotalMealInCategory(categoryName);
     App.toggleMenu();
   };
 
@@ -127,25 +128,6 @@ class App {
       comments,
       type: "Recipe",
     });
-  };
-
-  showTotalCategory = () => {
-    const noOfCategory = Array.from(
-      document.querySelectorAll(".category__card")
-    );
-    document
-      .querySelectorAll(".counter")
-      .forEach(
-        (category) =>
-          (category.innerText = `Showing all ${noOfCategory.length} Categories`)
-      );
-  };
-
-  showTotalMealInCategory = (categoryName) => {
-    const noOfMeal = Array.from(document.querySelectorAll(".recipes__card"));
-    document.querySelector(
-      ".landing__counter"
-    ).innerText = `${categoryName}(${noOfMeal.length})`;
   };
 
   static forEachListener(items, func) {
@@ -185,7 +167,7 @@ class App {
 
     this.heroLogos[0].addEventListener("click", () => {
       setTimeout(() => {
-        this.showTotalCategory();
+        Counters.showTotalCategory();
       }, 2000);
     });
   }
@@ -198,7 +180,3 @@ class App {
     this.recipes = document.querySelector(".recipes__card");
   }
 }
-
-const app = new App();
-
-export default app;
