@@ -48,8 +48,8 @@ export default class App {
 
   goBackToCommonParent = (node, a) => {
     if (
-      node.getAttribute(a.type).includes(a.item) !==
-      node.parentNode.getAttribute(a.type).includes(a.item)
+      node.getAttribute(a.type).includes(a.item)
+      !== node.parentNode.getAttribute(a.type).includes(a.item)
     )
       return node;
     return this.goBackToCommonParent(node.parentNode, a);
