@@ -175,6 +175,11 @@ class App {
 
       if (clickedElement.classList.contains("fa-heart")) {
         UserInterface.addToLikesCounterDOM(clickedElement);
+        const mealID = this.goBackToCommonParent(clickedElement, {
+          type: "class",
+          item: "list",
+        }).id;
+        InvolvementAPI.addLike(mealID);
       }
     });
 
@@ -190,6 +195,7 @@ class App {
     this.menuItems = document.querySelectorAll(".menu__item");
     this.heroLogos = document.querySelectorAll(".hero__logo");
     this.LIST = document.querySelector(".list");
+    this.recipes = document.querySelector(".recipes__card");
   }
 }
 
