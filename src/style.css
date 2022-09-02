@@ -294,6 +294,10 @@ span > i.menu-toggle {
   cursor: pointer;
 }
 
+.fa-heart:hover {
+  color: red;
+}
+
 .recipes__comments {
   display: block;
   width: 70%;
