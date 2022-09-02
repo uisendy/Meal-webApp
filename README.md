@@ -27,7 +27,7 @@ GetSen Meal WebApp is a javascript capstone project that has many meal categorie
 
 ## Live Demo
 
-[Demo](Coming Soon)
+[Demo Coming Soon]()
 
 ## Getting Started
 
