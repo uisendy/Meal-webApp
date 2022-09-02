@@ -1,11 +1,10 @@
-import FetchRequest from './fetchRequest.js';
+import FetchRequest from "./fetchRequest.js";
 
 const urlMap = {
-  random: 'https://www.themealdb.com/api/json/v1/1/random.php',
-  categories:
-    'https://www.themealdb.com/api/json/v1/1/categories.php',
-  byCategory: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
-  byMealId: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
+  random: "https://www.themealdb.com/api/json/v1/1/random.php",
+  categories: "https://www.themealdb.com/api/json/v1/1/categories.php",
+  byCategory: "https://www.themealdb.com/api/json/v1/1/filter.php?c=",
+  byMealId: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=",
 };
 
 export default class MealAPI {
